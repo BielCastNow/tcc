@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard Administrativo
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-layout">
+
+    ```
+    <!-- SIDEBAR -->
+
+    <aside class="admin-sidebar">
+
+        <h2>
+            🌿 Admin
+        </h2>
+
+        <a href="/admin">
+            Dashboard
+        </a>
+
+        <a href="/admin/posts">
+            Gerenciar Posts
+        </a>
+
+        <a href="/admin/posts/criar">
+            Novo Post
+        </a>
+
+        <a href="/logout">
+            Sair
+        </a>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="admin-content">
+
+        <h1>
+            Dashboard
+        </h1>
+
+        <!-- CARDS -->
+
+        <div class="admin-stats">
+
+            <div class="admin-card">
+
+                <h3>
+                    {{ total_posts }}
+                </h3>
+
+                <p>
+                    Publicações
+                </p>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h3>
+                    {{ total_users }}
+                </h3>
+
+                <p>
+                    Usuários
+                </p>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h3>
+                    {{ total_comments }}
+                </h3>
+
+                <p>
+                    Comentários
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ÚLTIMOS POSTS -->
+
+        <section class="admin-posts">
+
+            <h2>
+                Últimas Publicações
+            </h2>
+
+            {% if ultimos_posts %}
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Título
+                        </th>
+
+                        <th>
+                            Visualizações
+                        </th>
+
+                        <th>
+                            Data
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for post in ultimos_posts %}
+
+                    <tr>
+
+                        <td>
+                            {{ post.titulo }}
+                        </td>
+
+                        <td>
+                            {{ post.visualizacoes }}
+                        </td>
+
+                        <td>
+                            {{ post.criado_em.strftime('%d/%m/%Y') }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <p>
+                Nenhuma publicação encontrada.
+            </p>
+
+            {% endif %}
+
+        </section>
+
+    </main>
+    ```
+
+</div>
+
+{% endblock %}

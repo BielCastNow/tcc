@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ post.titulo }}
+{% endblock %}
+
+{% block content %}
+
+<!-- CAPA -->
+
+<section class="post-hero">
+
+    ```
+    {% if post.imagem_capa %}
+
+    <img src="{{ url_for('static', filename='uploads/' + post.imagem_capa) }}" alt="{{ post.titulo }}"
+        class="post-hero-image">
+
+    {% endif %}
+
+    <div class="post-hero-overlay">
+
+        <div class="container">
+
+            <span class="post-category">
+
+                {% if post.categoria %}
+                {{ post.categoria.nome }}
+                {% else %}
+                Meio Ambiente
+                {% endif %}
+
+            </span>
+
+            <h1>
+                {{ post.titulo }}
+            </h1>
+
+            <div class="post-meta">
+
+                <span>
+                    👁 {{ post.visualizacoes }} visualizações
+                </span>
+
+                <span>
+                    📅 {{ post.criado_em.strftime('%d/%m/%Y') }}
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+    ```
+
+</section>
+
+<!-- CONTEÚDO -->
+
+<section class="post-wrapper">
+
+    ```
+    <div class="container">
+
+        <article class="post-content-card">
+
+            {% if post.resumo %}
+
+            <div class="post-resumo">
+
+                {{ post.resumo }}
+
+            </div>
+
+            {% endif %}
+
+            <div class="post-text">
+
+                {{ post.conteudo|safe }}
+
+            </div>
+
+        </article>
+
+    </div>
+    ```
+
+</section>
+
+<!-- COMENTÁRIOS -->
+
+<section class="comments-section">
+
+    ```
+    <div class="container">
+
+        <div class="section-header">
+
+            <span>
+                Interação
+            </span>
+
+            <h2>
+                Comentários
+            </h2>
+
+        </div>
+
+        {% if session.get('user_id') %}
+
+        <form action="/comentar/{{ post.id }}" method="POST" class="comment-form">
+
+            <textarea name="comentario" placeholder="Escreva seu comentário..." required>
+        </textarea>
+
+            <button type="submit">
+
+                Publicar comentário
+
+            </button>
+
+        </form>
+
+        {% else %}
+
+        <div class="login-alert">
+
+            Faça login para comentar.
+
+        </div>
+
+        {% endif %}
+
+        {% for comentario in post.comentarios %}
+
+        <div class="comment-card">
+
+            <div class="comment-header">
+
+                <strong>
+
+                    {{ comentario.usuario.nome }}
+
+                </strong>
+
+            </div>
+
+            <p>
+
+                {{ comentario.comentario }}
+
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+    ```
+
+</section>
+
+{% endblock %}

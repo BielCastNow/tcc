@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}
+Gerenciar Posts
+{% endblock %}
+
+{% block content %}
+
+<div class="admin-page">
+
+    ```
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+                📄 Gerenciar Reportagens
+            </h1>
+
+            <p>
+                Gerencie todas as publicações do portal.
+            </p>
+
+        </div>
+
+        <a href="/admin/posts/criar" class="btn-primary">
+            + Novo Post
+        </a>
+
+    </div>
+
+    <div class="admin-card">
+
+        <table class="admin-table">
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Visualizações</th>
+                    <th>Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for post in posts %}
+
+                <tr>
+
+                    <td>{{ post.id }}</td>
+
+                    <td>
+
+                        <strong>
+                            {{ post.titulo }}
+                        </strong>
+
+                    </td>
+
+                    <td>
+
+                        👁 {{ post.visualizacoes }}
+
+                    </td>
+
+                    <td class="actions">
+
+                        <a href="/post/{{ post.id }}" class="btn-view">
+
+                            Ver
+
+                        </a>
+
+                        <a href="/admin/posts/editar/{{ post.id }}" class="btn-edit">
+
+                            Editar
+
+                        </a>
+
+                        <a href="/admin/posts/excluir/{{ post.id }}" class="btn-delete"
+                            onclick="return confirm('Deseja excluir este post?')">
+
+                            Excluir
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+    ```
+
+</div>
+
+{% endblock %}

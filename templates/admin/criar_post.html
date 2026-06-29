@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Nova Reportagem
+{% endblock %}
+
+{% block content %}
+
+<div class="editor-page">
+
+    ```
+    <div class="editor-card">
+
+        <h1>
+            ✍ Nova Reportagem
+        </h1>
+
+        <form method="POST" enctype="multipart/form-data" class="editor-form">
+
+            <label>
+                Título
+            </label>
+
+            <input type="text" name="titulo" required>
+
+            <label>
+                Resumo
+            </label>
+
+            <textarea name="resumo" rows="4">
+        </textarea>
+
+            <label>
+                Conteúdo
+            </label>
+
+            <textarea name="conteudo" rows="15">
+        </textarea>
+
+            <label>
+                Imagem de capa
+            </label>
+
+            <input type="file" name="imagem">
+
+            <button type="submit" class="btn-primary">
+
+                Publicar Reportagem
+
+            </button>
+
+        </form>
+
+    </div>
+    ```
+
+</div>
+
+{% endblock %}

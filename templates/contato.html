@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contato
+{% endblock %}
+
+{% block content %}
+<section class="hero hero-small">
+
+    <div class="hero-slider">
+
+        <div class="slide"></div>
+        <div class="slide"></div>
+        <div class="slide"></div>
+
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero__content">
+
+        <span class="hero__tag">
+            FALE CONOSCO
+        </span>
+
+        <h1>
+            Entre em Contato
+        </h1>
+
+        <p>
+            Tire dúvidas, envie sugestões ou compartilhe projetos ambientais.
+        </p>
+
+    </div>
+
+</section>
+
+<section style="padding:100px 0;">
+
+    ```
+    <div class="container">
+
+        <div class="post-card">
+
+            <div class="post-card__content">
+
+                <form class="contact-form">
+
+                    <input type="text" placeholder="Seu nome" required>
+
+                    <input type="email" placeholder="Seu email" required>
+
+                    <textarea rows="8" placeholder="Digite sua mensagem" required>
+                </textarea>
+
+                    <button type="submit" class="contact-btn">
+
+                        Enviar Mensagem
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+    ```
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+Editar Reportagem
+{% endblock %}
+
+{% block content %}
+
+<div class="editor-page">
+
+    ```
+    <div class="editor-card">
+
+        <h1>
+            📝 Editar Reportagem
+        </h1>
+
+        <form method="POST" class="editor-form">
+
+            <label>
+                Título
+            </label>
+
+            <input type="text" name="titulo" value="{{ post.titulo }}" required>
+
+            <label>
+                Resumo
+            </label>
+
+            <textarea name="resumo" rows="4">{{ post.resumo }}</textarea>
+
+            <label>
+                Conteúdo
+            </label>
+
+            <textarea rows="15" name="conteudo">{{ post.conteudo }}</textarea>
+
+            <button type="submit" class="btn-primary">
+
+                Salvar Alterações
+
+            </button>
+
+        </form>
+
+    </div>
+    ```
+
+</div>
+
+{% endblock %}
