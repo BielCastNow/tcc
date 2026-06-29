@@ -1,6 +1,5 @@
 from flask import Flask
 from config import Config
-from urllib.parse import quote_plus
 from models.database import db
 from routes.auth import auth
 from routes.admin import admin
@@ -11,7 +10,6 @@ from routes.public import public
 app = Flask(__name__)
 
 app.config.from_object(Config)
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql:// {quote_plus(Config.DB_USER)}:{quote_plus(Config.DB_PASSWORD)}@{Config.DB_HOST}/{Config.DB_NAME}"
 
 db.init_app(app)
 
